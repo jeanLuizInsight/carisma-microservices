@@ -2,6 +2,12 @@
 spring:
   application:
     name: greeting-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
 # propriedades personalizadas
 greeting-service:
   greeting: "Olá"
