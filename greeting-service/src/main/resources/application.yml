@@ -1,0 +1,8 @@
+# propriedades Spring
+spring:
+  application:
+    name: greeting-service
+# propriedades personalizadas
+greeting-service:
+  greeting: "Olá"
+  default-value: "Mundo"
