@@ -1,14 +1,17 @@
+server:
+  port: 8080
 # propriedades Spring
 spring:
   application:
     name: greeting-service
+  config:
+    import: optional:configserver:http://localhost:8888/
+  cloud:
+    config:
+      profile: producao
 management:
   endpoints:
     web:
       exposure:
         include:
         - "*"
-# propriedades personalizadas
-greeting-service:
-  greeting: "Olá"
-  default-value: "Mundo"
