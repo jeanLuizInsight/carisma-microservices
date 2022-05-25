@@ -1,8 +1,10 @@
 package com.zanatta.cambioservice.controllers;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.zanatta.cambioservice.models.Cambio;
+import com.zanatta.cambioservice.repository.CambioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -17,13 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("cambio-service")
 public class CambioController {
 
-    @Autowired
-    private Environment env;
+    @Autowired private Environment env;
+    @Autowired private CambioRepository cambioRepository;
     
     @GetMapping(value = "/{amount}/{from}/{to}")
     @ResponseStatus(value = HttpStatus.OK)
     public Cambio getCambio(@PathVariable("amount") BigDecimal amount, @PathVariable("from") String from, @PathVariable("to") String to) {
-
-        return new Cambio(1L, from, to, BigDecimal.ONE, BigDecimal.ONE, env.getProperty("local.server.port"));
+        var cambio = this.cambioRepository.findByFromAndTo(from, to);
+        if (cambio == null) {
+            throw new RuntimeException("Currency Unsuported.");
+        }
+        cambio.setEnvironment(env.getProperty("local.server.port"));
+        cambio.setConvertedValue(cambio.getConversionFactor().multiply(amount).setScale(2, RoundingMode.CEILING));
+        return cambio;
     }
 }
