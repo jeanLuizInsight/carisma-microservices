@@ -27,6 +27,8 @@ public class Cambio implements Serializable {
     @Transient
     private String environment;
 
+    public Cambio() {}
+
     public Cambio(Long id, String from, String to, BigDecimal conversionFactor, BigDecimal convertedValue,
             String environment) {
         this.id = id;
