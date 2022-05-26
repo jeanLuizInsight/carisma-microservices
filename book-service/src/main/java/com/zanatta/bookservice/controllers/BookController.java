@@ -2,8 +2,8 @@ package com.zanatta.bookservice.controllers;
 
 import java.util.Optional;
 
-import com.zanatta.bookservice.io.rest.CambioRest;
 import com.zanatta.bookservice.models.Book;
+import com.zanatta.bookservice.proxy.CambioProxy;
 import com.zanatta.bookservice.repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class BookController {
 
     @Autowired private Environment env;
     @Autowired private BookRepository bookRepository;
-    @Autowired private CambioRest cambioRest;
+    @Autowired private CambioProxy cambioProxy;
 
     @GetMapping(value = "/{id}/{currency}")
     public Book getBook(@PathVariable("id") Long id, @PathVariable("currency") String currency) {
@@ -30,7 +30,7 @@ public class BookController {
         Book book = opt.get();
         book.setEnvironment(env.getProperty("local.server.port"));
 
-        var cambioDto = this.cambioRest.getCambio(book, currency);
+        var cambioDto = this.cambioProxy.getCambio(book.getPrice(), "USD", currency);
         book.setPrice(cambioDto.getConvertedValue());
         return book;
     }
