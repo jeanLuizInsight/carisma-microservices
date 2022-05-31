@@ -28,10 +28,9 @@ public class BookController {
             throw new RuntimeException("Book not found.");
         }
         Book book = opt.get();
-        book.setEnvironment(env.getProperty("local.server.port"));
-
         var cambioDto = this.cambioProxy.getCambio(book.getPrice(), "USD", currency);
         book.setPrice(cambioDto.getConvertedValue());
+        book.setEnvironment("Book port: " + env.getProperty("local.server.port") + ", Cambio port: " + cambioDto.getEnvironment());
         return book;
     }
     

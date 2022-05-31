@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * Proxy realizando chamada RESt com Feign (substituindo RestTemplate)
  */
-@FeignClient(name = "cambio-service", url = "localhost:8000")
+@FeignClient(name = "cambio-service")
 public interface CambioProxy {
     
     @GetMapping(value = "/cambio-service/{amount}/{from}/{to}")
