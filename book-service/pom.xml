@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 		<flyway.version>7.15.0</flyway.version>
+		<resilience4j-spring-boot2>1.7.0</resilience4j-spring-boot2>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,6 +58,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-spring-boot2</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
