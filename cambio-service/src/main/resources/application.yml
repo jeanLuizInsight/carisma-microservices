@@ -25,3 +25,7 @@ spring:
     - cambio_service
     user: poc
     password: mysqlpw
+springdoc:
+  api-docs:
+    path: book-service/v3/api-docs # adicionado para doc ser encontrado no gateway
+  show-actuator: true

@@ -1,10 +1,11 @@
-package com.zanatta.apigateway.config;
+package com.zanatta.apigateway.configuration;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuração realizada via application.yml
+ */
 //@Configuration
 public class ApiGatewayConfiguration {
     

@@ -60,7 +60,10 @@ resilience4j:
     instances:
       fooBarBh:
         max-concurrent-calls: 10 # até 10 chamadas concorrentes
-
+springdoc:
+  api-docs:
+    path: book-service/v3/api-docs # adicionado para doc ser encontrado no gateway
+  show-actuator: true
 
 
 
