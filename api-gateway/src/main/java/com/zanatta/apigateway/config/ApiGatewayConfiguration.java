@@ -5,7 +5,7 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class ApiGatewayConfiguration {
     
     /**
@@ -13,7 +13,7 @@ public class ApiGatewayConfiguration {
      * @param builder
      * @return
     */
-    @Bean
+    //@Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
         return builder.routes()
             // rota para o cambio service

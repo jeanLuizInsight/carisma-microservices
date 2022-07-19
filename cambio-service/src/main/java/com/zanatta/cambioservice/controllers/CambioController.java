@@ -6,6 +6,8 @@ import java.math.RoundingMode;
 import com.zanatta.cambioservice.dtos.CambioDTO;
 import com.zanatta.cambioservice.repository.CambioRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -15,13 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Cambio endpoint")
 @RestController
 @RequestMapping("cambio-service")
 public class CambioController {
 
     @Autowired private Environment env;
     @Autowired private CambioRepository cambioRepository;
-    
+
+    @Operation(summary = "Busca um cambio pela moeda especificada.")
     @GetMapping(value = "/{amount}/{from}/{to}")
     @ResponseStatus(value = HttpStatus.OK)
     public CambioDTO getCambio(@PathVariable("amount") BigDecimal amount, @PathVariable("from") String from, @PathVariable("to") String to) {

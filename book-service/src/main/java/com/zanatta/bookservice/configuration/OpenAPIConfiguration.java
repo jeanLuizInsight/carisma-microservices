@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
         title = "Book Service API",
         version = "v1",
         description = "Documentação da API Book Service"))
-public class OpenApiCOnfiguration {
+public class OpenAPIConfiguration {
 
     @Bean
     public OpenAPI customOpenAPI() {

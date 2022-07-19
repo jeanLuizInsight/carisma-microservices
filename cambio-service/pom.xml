@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 		<flyway.version>7.15.0</flyway.version>
+		<springdoc-openapi.version>1.6.9</springdoc-openapi.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,6 +54,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webmvc-core</artifactId>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

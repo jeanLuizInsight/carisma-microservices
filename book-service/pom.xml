@@ -18,7 +18,7 @@
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 		<flyway.version>7.15.0</flyway.version>
 		<resilience4j-spring-boot2.version>1.7.0</resilience4j-spring-boot2.version>
-		<springdoc-openapi-webmvc-core.version>1.6.9</springdoc-openapi-webmvc-core.version>
+		<springdoc-openapi.version>1.6.9</springdoc-openapi.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -67,8 +67,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-webmvc-core</artifactId>
-			<version>${springdoc-openapi-webmvc-core.version}</version>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

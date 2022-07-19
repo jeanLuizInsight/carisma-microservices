@@ -24,7 +24,7 @@ public class BookController {
     @Autowired private BookRepository bookRepository;
     @Autowired private CambioProxy cambioProxy;
 
-    @Operation(summary = "Busca uma especificação de libro pelo ID.")
+    @Operation(summary = "Busca uma especificação de book pelo ID.")
     @GetMapping(value = "/{id}/{currency}")
     public Book getBook(@PathVariable("id") Long id, @PathVariable("currency") String currency) {
         Optional<Book> opt = this.bookRepository.findById(id);
