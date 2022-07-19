@@ -28,9 +28,30 @@ spring:
 resilience4j:
   retry:
     instances:
-      foo-bar:
+      fooBar:
         max-attempts: 5 # tenta 5 vezes
         wait-duration: 1s # em intervalo de 1s
         enable-exponential-backoff: true # cada intervalo aumenta exponencial
+  circuitbreaker:
+    configs:
+      default:
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 50
+        permittedNumberOfCallsInHalfOpenState: 5
+        slidingWindowSize: 20
+        slidingWindowType: TIME_BASED
+        waitDurationInOpenState: 30s
+        slowCallRateThreshold: 80
+        slowCallDurationThreshold: 29s
+        registerHealthIndicator: true
+        recordExceptions:
+          - feign.FeignException.InternalServerError
+          - feign.FeignException.ServiceUnavailable
+          - feign.FeignException.GatewayTimeout
+    instances:
+      fooBarCb:
+        base-config: default
+
+
 
 
