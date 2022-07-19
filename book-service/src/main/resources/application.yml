@@ -51,6 +51,11 @@ resilience4j:
     instances:
       fooBarCb:
         base-config: default
+  ratelimiter:
+    instances:
+      fooBarRt:
+        limit-for-period: 2 # 2 requisições
+        limit-refresh-period: 10s # a cada 10 segundos
 
 
 

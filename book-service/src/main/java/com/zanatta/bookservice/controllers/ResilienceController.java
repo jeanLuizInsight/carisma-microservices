@@ -31,6 +31,13 @@ public class ResilienceController {
         var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
         return response.getBody();
     }
+    @GetMapping("/foo-bar-rt")
+    @RateLimiter(name = "fooBarRt", fallbackMethod = "retornoFallback")
+    public String fooBarRt() {
+        logger.info("request foo-bar-cb is received!!!");
+        var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
+        return response.getBody();
+    }
 
 
     public String retornoFallback(Exception ex) {
