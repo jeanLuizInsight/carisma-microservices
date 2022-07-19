@@ -25,3 +25,12 @@ spring:
     - book_service
     user: poc
     password: mysqlpw
+resilience4j:
+  retry:
+    instances:
+      foo-bar:
+        max-attempts: 5 # tenta 5 vezes
+        wait-duration: 1s # em intervalo de 1s
+        enable-exponential-backoff: true # cada intervalo aumenta exponencial
+
+
