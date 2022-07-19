@@ -1,5 +1,6 @@
 package com.zanatta.bookservice.controllers;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -34,11 +35,18 @@ public class ResilienceController {
     @GetMapping("/foo-bar-rt")
     @RateLimiter(name = "fooBarRt", fallbackMethod = "retornoFallback")
     public String fooBarRt() {
-        logger.info("request foo-bar-cb is received!!!");
+        logger.info("request foo-bar-rt is received!!!");
         var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
         return response.getBody();
     }
 
+    @GetMapping("/foo-bar-bh")
+    @Bulkhead(name = "fooBarBh", fallbackMethod = "retornoFallback")
+    public String fooBarBh() {
+        logger.info("request foo-bar-bh is received!!!");
+        var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
+        return response.getBody();
+    }
 
     public String retornoFallback(Exception ex) {
         return "fallbackMethod foo-bar: " + ex.getMessage();

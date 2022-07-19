@@ -56,6 +56,10 @@ resilience4j:
       fooBarRt:
         limit-for-period: 2 # 2 requisições
         limit-refresh-period: 10s # a cada 10 segundos
+  bulkhead:
+    instances:
+      fooBarBh:
+        max-concurrent-calls: 10 # até 10 chamadas concorrentes
 
 
 
